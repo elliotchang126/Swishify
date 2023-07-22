@@ -1,4 +1,4 @@
-x[
+[
   {
     "PERSON_ID": 201939,
     "FIRST_NAME": "Stephen",
@@ -7,7 +7,7 @@ x[
     "DISPLAY_LAST_COMMA_FIRST": "Curry, Stephen",
     "DISPLAY_FI_LAST": "S. Curry",
     "PLAYER_SLUG": "stephen-curry",
-    "BIRTHDATE": "1988-03-14T00:00:00",
+    "BIRTHDATE": "1988-03-14",
     "SCHOOL": "Davidson",
     "COUNTRY": "USA",
     "LAST_AFFILIATION": "Davidson/USA",
