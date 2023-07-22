@@ -3,11 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="dist/main.js"></script>
+    <script src = "https://d3js.org/d3.v6.min.js"></script>
+    <script src="dist/main.js" defer></script>
     <link rel="stylesheet" href="dist/main.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <title>Swishify</title>
 </head>
 <body>
-    
+    <h1>Swishify</h1>
+    <section class="profile-container">
+        <div class="profile-render"></div>
+        <div class="profile-selector"></div>
+    </section>
+    <section class="shot-chart-container">
+        <div class="shot-chart"></div>
+        <div class="shot-chart-type">
+            <button id="shot_chart">Player Shot Chart</button>
+            <button id="zone_chart">Player Zone Chart</button>
+            <button id="comparison_chart">Player Comparison Chart</button>
+        </div>
+        <div class="player-one">
+            <select id="player-selector">
+                <option value="brown">Jaylen Brown</option>
+                <option value="butler">Jimmy Butler</option>
+                <option value="curry">Stephen Curry</option>
+                <option value="doncic">Luka Doncic</option>
+                <option value="embiid">Joel Embiid</option>
+                <option value="fox">De'Aaron Fox</option>
+                <option value="giannis">Giannis Antetokounmpo</option>
+                <option value="jokic">Nikola Jokic</option>
+                <option selected="selected" value="lebron">LeBron James</option>
+                <option value="lillard">Damian Lillard</option>
+                <option value="mitchell">Donovan Mitchell</option>
+                <option value="randle">Julius Randle</option>
+                <option value="sabonis">Domantas Sabonis</option>
+                <option value="shai">Shai Gilgeous-Alexander</option>
+                <option value="tatum">Jayson Tatum</option>
+            </select>
+        </div>
+        <div class="player-two"></div>
+        <select id="player-selector" disabled>
+            <option value="brown">Jaylen Brown</option>
+            <option value="butler">Jimmy Butler</option>
+            <option value="curry">Stephen Curry</option>
+            <option value="doncic">Luka Doncic</option>
+            <option value="embiid">Joel Embiid</option>
+            <option value="fox">De'Aaron Fox</option>
+            <option value="giannis">Giannis Antetokounmpo</option>
+            <option value="jokic">Nikola Jokic</option>
+            <option value="lebron">LeBron James</option>
+            <option value="lillard">Damian Lillard</option>
+            <option value="mitchell">Donovan Mitchell</option>
+            <option value="randle">Julius Randle</option>
+            <option value="sabonis">Domantas Sabonis</option>
+            <option value="shai">Shai Gilgeous-Alexander</option>
+            <option value="tatum">Jayson Tatum</option>
+        </select>
+    </section>
+
+    <script src="src/scripts/shotchart.js"></script>
 </body>
 </html>
