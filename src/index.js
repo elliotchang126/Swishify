@@ -1,9 +1,15 @@
+import { background } from "./scripts/background";
 import { drawHalfCourt } from "./scripts/shotchart";
 import { zoneChart } from "./scripts/zone";
 // import { writeProfile } from "./scripts/profile";
+const playerBackgrounds = require("../assets/player_backgrounds.json")
 
 let defaultPlayer = ""; //* empty default so page renders with an empty court
 let playerProfile = "lebron";
+const playerBackground = playerBackgrounds[playerProfile];
+document.body.style.backgroundImage = `url(../assets/backgrounds/${playerBackground.image})`
+document.body.style.backgroundColor = playerBackground.background;
+document.body.style.backgroundRepeat = 'no-repeat';
 
 const playerOneSelector = document.querySelector(".player-one-selector")
 const profileSelector = document.querySelector(".profile-dropdown")
@@ -11,11 +17,13 @@ const modal = document.querySelector(".modal")
 const button = document.querySelector("#instructions")
 const instructions = document.querySelector(".close")
 
+// open instructions when button is clicked
 button.onclick = function() {
     modal.style.display = "block";
     document.querySelector(".content").classList.add("blur");
 }
 
+// these next two close the buttons
 instructions.onclick = function() {
     modal.style.display = "none";
     document.querySelector(".content").classList.remove("blur");
@@ -27,7 +35,7 @@ window.onclick = function(event) {
         document.querySelector(".content").classList.remove("blur");
     }
 }
-
+// draw the shots, if made shots = 1, the circle is green, otherwise it's red
 function drawShots(svg, arr) {
     svg.selectAll(".dot")
     .data(arr)
@@ -65,19 +73,27 @@ function generateShotChart(player) {
 }
 
 profileSelector.addEventListener("change", function() {
+    const playerBackgrounds = require("../assets/player_backgrounds.json")
+
     d3.select(".profile-render div").remove()
     d3.select(".profile-container img").remove()
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
     if (!playerProfile) {
         playerProfile = "lebron"
     }
+    const playerBackground = playerBackgrounds[playerProfile];
+    document.body.style.backgroundImage = `url(../assets/backgrounds/${playerBackground.image})`
+    document.body.style.backgroundColor = playerBackground.background;
+    document.body.style.backgroundRepeat = 'no-repeat';
     writeProfile(playerProfile);
 })
 
+
+// generates the player profile information
 function writeProfile(player) {
     let playerDetails = require(`../assets/player_profile/${player}.json`)
     let playerStats = require(`../assets/player_career_stats/${player}.json`)
-    // let image = require(`../assets/player_headshots/${player}.webp`)
+
     const img = d3.select(".profile-container")
         .append("img")
         .attr('src', `../assets/player_headshots/${player}.webp`)

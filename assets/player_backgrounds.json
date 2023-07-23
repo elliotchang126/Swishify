@@ -1,0 +1,17 @@
+{
+    "lebron": {"image": "lebron.svg", "background": "#552583"},
+    "curry": {"image": "curry.svg", "background": "#1D428A"},
+    "brown": {"image": "brown.svg", "background": "#007A33"},
+    "butler": {"image": "butler.svg", "background": "#98002E"},
+    "doncic": {"image": "doncic.svg", "background": "#00538C"},
+    "embiid": {"image": "embiid.svg", "background": "#ED174C"},
+    "fox": {"image": "fox.svg", "background": "#5A2D81"},
+    "giannis": {"image": "giannis.svg", "background": "#00471B"},
+    "jokic": {"image": "jokic.svg", "background": "#0E2240"},
+    "lillard": {"image": "lillard.svg", "background": "#E03A3E"},
+    "mitchell": {"image": "mitchell.svg", "background": "#860038"},
+    "randle": {"image": "randle.svg", "background": "#006BB6"},
+    "sabonis": {"image": "sabonis.svg", "background": "#5A2D81"},
+    "shai": {"image": "shai.svg", "background": "#007AC1"},
+    "tatum": {"image": "tatum.svg", "background": "#007A33"}
+}
