@@ -6,6 +6,11 @@ export function drawHalfCourt () {
     .attr("width", 500) //* +250 to account for D3 start plot
     .attr("height", 450); //* +50 to account for shots behind basket
     
+
+    svg.append("image")
+        .attr("xlink:href", "../assets/hardwood.png")
+        .attr("width", 500)
+        .attr("height", 500);
     // half court
     svg.append("rect")
         .attr("x", 0)
@@ -64,29 +69,30 @@ export function drawHalfCourt () {
         .style("stroke", "#333")
         .style("stroke-width", 4);
     
-    // basketball rim
-    svg.append("circle")
-        .attr("cx", 250)
-        .attr("cy", 57.5)
-        .attr("r", 7.5)
-        .style("fill", "none")
-        .style("stroke", "#FFA500")
-        .style("stroke-width", 4);
-
-    // restricted area
-    const restrictedArea = d3.arc()
-        .innerRadius(0)
+        // restricted area
+        const restrictedArea = d3.arc()
+        .innerRadius(40)
         .outerRadius(40)
         .startAngle(Math.PI)
         .endAngle(2 * Math.PI);
 
-    svg.append("path")
+        
+        svg.append("path")
         .attr("d", restrictedArea)
         .attr("transform", "translate(250, 50) rotate(-90)")
         .style("fill", "none")
         .style("stroke", "#333")
         .style("stroke-width", 4);
-    
+        
+        // basketball rim
+        svg.append("circle")
+            .attr("cx", 250)
+            .attr("cy", 57.5)
+            .attr("r", 7.5)
+            .style("fill", "none")
+            .style("stroke", "#FFA500")
+            .style("stroke-width", 4);
+
     // free throw arc
     const basket = d3.arc()
         .innerRadius(0)

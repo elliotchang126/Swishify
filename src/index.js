@@ -1,8 +1,8 @@
 import { drawHalfCourt } from "./scripts/shotchart";
-import { writeProfile } from "./scripts/profile";
+// import { writeProfile } from "./scripts/profile";
 
-let defaultPlayer = "";
-let playerProfile = "";
+let defaultPlayer = ""; //* empty default so page renders with an empty court
+let playerProfile = "lebron";
 let profileDetails = "";
 let playerStats = "";
 
@@ -25,7 +25,7 @@ function drawShots(svg, arr) {
 }
 
 playerOneSelector.addEventListener("change", function () {
-    d3.select(".shot-chart svg").remove();
+    d3.select(".shot-chart svg").remove(); //* remove current chart
 
     defaultPlayer = playerOneSelector.options[playerOneSelector.selectedIndex].value;
     generateShotChart(defaultPlayer);
@@ -34,7 +34,7 @@ playerOneSelector.addEventListener("change", function () {
 function generateShotChart(player) {
     let playerChart = require(`../assets/year_stats/${player}-23.json`);
     if (!playerChart) {
-        drawHalfCourt();
+        drawHalfCourt(); // if 
     } else {
         let arr = [];
         playerChart.forEach(el => {
@@ -46,10 +46,132 @@ function generateShotChart(player) {
 }
 
 profileSelector.addEventListener("change", function() {
-    d3.select("profile-render body").remove()
+    d3.select(".profile-render body").remove()
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
+    if (!playerProfile) {
+        playerProfile = "lebron"
+    }
     writeProfile(playerProfile);
 })
 
-document.addEventListener("DOMContentLoaded", drawHalfCourt());
-document.addEventListener("DOMContentLoaded", writeProfile());
+function writeProfile(player) {
+    let playerDetails = require(`../assets/player_profile/${player}.json`)
+    let playerStats = require(`../assets/player_career_stats/${player}.json`)
+
+    const body = d3.select(".profile-render")
+    .append("body")
+    .attr("width", 500)
+    .attr("height", 500);
+
+    body.append("p")
+        .attr("class", "detail")
+        .text("Name:");
+    body.append("P")
+        .text(`${playerDetails[0]["DISPLAY_FIRST_LAST"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Position:");
+    body.append("P")
+        .text(`${playerDetails[0]["POSITION"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Country:");
+    body.append("P")
+        .text(`${playerDetails[0]["COUNTRY"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Birth Date:");
+    body.append("p")
+        .text(`${playerDetails[0]["BIRTHDATE"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("School:");
+    body.append("p")
+        .text(`${playerDetails[0]["SCHOOL"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Height:");
+    body.append("p")
+        .text(`${playerDetails[0]["HEIGHT"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Weight:");
+    body.append("p")
+        .text(`${playerDetails[0]["WEIGHT"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Team Name:");
+    body.append("p")
+        .text(`${playerDetails[0]["TEAM_NAME"]}`);
+
+    body.append("p")
+    .attr("class", "detail")
+        .text("Jersey Number:");
+    body.append("p")
+        .text(`${playerDetails[0]["JERSEY"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Draft Year:");
+    body.append("p")
+        .text(`${playerDetails[0]["DRAFT_YEAR"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Draft Round:");
+    body.append("p")
+        .text(`${playerDetails[0]["DRAFT_ROUND"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Draft Number:");
+    body.append("p")
+        .text(`${playerDetails[0]["DRAFT_NUMBER"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Average Points:");
+    body.append("p")
+        .text(`${playerStats[0]["PTS"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Average Rebounds:");
+    body.append("p")
+        .text(`${playerStats[0]["REB"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Average Assists:");
+    body.append("p")
+        .text(`${playerStats[0]["AST"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Field Goal %:");
+    body.append("p")
+        .text(`${playerStats[0]["FG_PCT"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("3 Point %:");
+    body.append("p")
+        .text(`${playerStats[0]["FG3_PCT"]}`);
+
+    body.append("p")
+            .attr("class", "detail")
+        .text("Free Throw %:");
+    body.append("p")
+        .text(`${playerStats[0]["FT_PCT"]}`);
+}
+
+
+document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
+document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
