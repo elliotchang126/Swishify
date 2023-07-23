@@ -5,7 +5,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe, h2, h3, h4, h5, h6, p, blockquote, pre,
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -54,8 +54,24 @@ table {
   border-spacing: 0;
 }
 
-body {
-  background-color: #552583;
+.main {
+  position: relative;
+  background-color: #1c0037;
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(../assets/player_headshots/lakers_70x70.svg);
+  background-size: contain;
+  background-color: #1c0037;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
 }
 
 h1 {
@@ -64,6 +80,8 @@ h1 {
   color: red;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 0.6);
+  font-size: 35px;
+  padding: 20px 20px 20px 20px;
 }
 
 body > div {
@@ -78,25 +96,111 @@ body > div {
 }
 
 .profile-container {
-  display: inline-block;
+  display: block;
+  width: 37.5%;
+  height: 100%;
 }
 
 .profile-render {
-  width: 500px;
-  height: 500px;
+  position: relative;
+  width: 550px;
+  height: 480px;
   display: flex;
   align-items: baseline;
   border: 3px solid black;
   margin-bottom: 10px;
 }
 
-.profile-render > body {
+.profile-render > div {
   display: flex;
   flex-wrap: wrap;
 }
 
-body > p {
+.profile-render > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  background-repeat: no-repeat;
+  opacity: 0.7; /* Set the opacity of the background image */
+  z-index: -1; /* Place it behind the content */
+}
+
+#profile-detail {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 0.6);
+}
+
+.player-info > p {
   flex: 1 0 50%;
   font-size: 20px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.player-info > p:nth-child(35) {
+  border-bottom: 2px solid black;
+}
+
+.player-info > p:nth-child(36) {
+  border-bottom: 2px solid black;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.instructions-modal {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 50%;
+}
+
+h4 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  align-self: center;
+  font-size: 30px;
+}
+
+.instructions-modal > p {
+  padding-top: 10px;
+  text-align: justify;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+}
+
+.close {
+  align-self: flex-end;
+  color: #aaaaaa;
+  float: right;
+  font: 30px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.blur {
+  filter: blur(5px);
 }

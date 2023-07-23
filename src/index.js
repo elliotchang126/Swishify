@@ -1,13 +1,32 @@
 import { drawHalfCourt } from "./scripts/shotchart";
+import { zoneChart } from "./scripts/zone";
 // import { writeProfile } from "./scripts/profile";
 
 let defaultPlayer = ""; //* empty default so page renders with an empty court
 let playerProfile = "lebron";
-let profileDetails = "";
-let playerStats = "";
 
 const playerOneSelector = document.querySelector(".player-one-selector")
 const profileSelector = document.querySelector(".profile-dropdown")
+const modal = document.querySelector(".modal")
+const button = document.querySelector("#instructions")
+const instructions = document.querySelector(".close")
+
+button.onclick = function() {
+    modal.style.display = "block";
+    document.querySelector(".content").classList.add("blur");
+}
+
+instructions.onclick = function() {
+    modal.style.display = "none";
+    document.querySelector(".content").classList.remove("blur");
+}
+
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+        document.querySelector(".content").classList.remove("blur");
+    }
+}
 
 function drawShots(svg, arr) {
     svg.selectAll(".dot")
@@ -46,7 +65,7 @@ function generateShotChart(player) {
 }
 
 profileSelector.addEventListener("change", function() {
-    d3.select(".profile-render body").remove()
+    d3.select(".profile-render div").remove()
     d3.select(".profile-container img").remove()
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
     if (!playerProfile) {
@@ -66,7 +85,8 @@ function writeProfile(player) {
 
 
     const body = d3.select(".profile-render")
-    .append("body")
+    .append("div")
+    .attr("class", "player-info")
     .attr("width", 500)
     .attr("height", 500);
 
@@ -178,7 +198,6 @@ function writeProfile(player) {
     body.append("p")
         .text(`${playerStats[0]["FT_PCT"]}`);
 }
-
 
 document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
