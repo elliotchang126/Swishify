@@ -47,6 +47,7 @@ function generateShotChart(player) {
 
 profileSelector.addEventListener("change", function() {
     d3.select(".profile-render body").remove()
+    d3.select(".profile-container img").remove()
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
     if (!playerProfile) {
         playerProfile = "lebron"
@@ -57,6 +58,12 @@ profileSelector.addEventListener("change", function() {
 function writeProfile(player) {
     let playerDetails = require(`../assets/player_profile/${player}.json`)
     let playerStats = require(`../assets/player_career_stats/${player}.json`)
+    // let image = require(`../assets/player_headshots/${player}.webp`)
+    const img = d3.select(".profile-container")
+        .append("img")
+        .attr('src', `../assets/player_headshots/${player}.webp`)
+        .attr("width", 300);
+
 
     const body = d3.select(".profile-render")
     .append("body")

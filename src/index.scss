@@ -46,12 +46,16 @@ table {
 	border-spacing: 0;
 }
 
+body {
+    background-color: #552583;
+}
 
 h1 {
     display:flex;
     justify-content: center;
     color: red;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 0.6);
 }
 
 body > div {
@@ -65,6 +69,11 @@ body > div {
     align-items:baseline;
 }
 
+.profile-container {
+    display: inline-block;
+    // flex-direction: column-reverse;
+}
+
 .profile-render {
     width: 500px;
     height: 500px;
@@ -76,7 +85,7 @@ body > div {
 
 .profile-render > body {
     display: flex;
-    flex-wrap: wrap;;
+    flex-wrap: wrap;
 }
 
 body > p {
