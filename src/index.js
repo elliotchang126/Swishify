@@ -94,7 +94,7 @@ function writeProfile(player) {
     let playerDetails = require(`../assets/player_profile/${player}.json`)
     let playerStats = require(`../assets/player_career_stats/${player}.json`)
 
-    const img = d3.select(".profile-container")
+    const img = d3.select(".profile-image")
         .append("img")
         .attr('src', `../assets/player_headshots/${player}.webp`)
         .attr("width", 300);
@@ -103,8 +103,6 @@ function writeProfile(player) {
     const body = d3.select(".profile-render")
     .append("div")
     .attr("class", "player-info")
-    .attr("width", 500)
-    .attr("height", 500);
 
     body.append("p")
         .attr("class", "detail")
