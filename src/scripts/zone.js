@@ -1,14 +1,14 @@
-// export function zoneChart() {
+export function zoneChart() {
     
-//     let svg = d3.select(".shot-chart")
-//     .append("svg")
-//     .attr("width", 300)
-//     .attr("height", 300);
+    let svg = d3.select(".shot-chart")
+    .append("svg")
+    .attr("width", 500)
+    .attr("height", 500);
   
-//   // Define a D3 path generator
+  // Define a D3 path generator
 //   let path = d3.path();
   
-//   // Draw the first parallel line
+// //   Draw the first parallel line
 //   path.moveTo(100, 100);  // Move the pen to the starting point of the first line
 //   path.lineTo(300, 100);  // Draw a line to this point
   
@@ -30,5 +30,6 @@
 //   svg.append("path")
 //     .attr("d", path.toString())
 //     .attr("stroke", "black")
-//     .attr("fill", "333");
-// }
+//     .attr("fill", "green");
+
+}

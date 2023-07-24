@@ -5,6 +5,7 @@ export function drawHalfCourt () {
     //* data assumes 0, 0 is basket so
     .attr("width", 500) //* +250 to account for D3 start plot
     .attr("height", 450); //* +50 to account for shots behind basket
+    // try adding percentages?
     
 
     svg.append("image")
