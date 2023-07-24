@@ -12,45 +12,50 @@
 <body class="main">
     <header>
         <button id="instructions">Instructions</button>
-        <div id="modal" class="modal">
+        <section>
+            <div id="modal" class="modal">
             <div class="instructions-modal">
-                <span class="close">&times;</span>
-                <h4>Welcome to Swishify!</h4>
-                <p>Swishify lets users look at the 2022-23 All-NBA players shot data and their career profile. The main two functions of Swishify is to look at a player's profile and their shot chart for the 2022-23 regular season.
-                </p> 
-                <p>On the left side is the player profile. By default, Swishify will load the page with LeBron James pre-selected. Just click on the dropdown below the chart to change the profile to your desired player. This will list their general information, as well as career average statistics.
-                </p>
-                <p>On the right, use the buttons to select which data you want to look. Click on the dropdown to select the player whose data you wish to see. The shot chart will generate a chart displaying where the player shot from, with green circles as makes and red circles as misses. The zone chart will display the player's field goal percentage by zone compared to the league average. The comparison chart compares the two players selected, showing their field goal percentages by zone. The second player dropdown is only available for the comparison chart.
-                </p>
+                    <span class="close">&times;</span>
+                    <h4>Welcome to Swishify!</h4>
+                    <p>Swishify lets users look at the 2022-23 All-NBA players shot data and their career profile. The main two functions of Swishify is to look at a player's profile and their shot chart for the 2022-23 regular season.
+                    </p> 
+                    <p>On the left side is the player profile. By default, Swishify will load the page with LeBron James pre-selected. Just click on the dropdown below the chart to change the profile to your desired player. This will list their general information, as well as career average statistics.
+                    </p>
+                    <p>On the right, use the buttons to select which data you want to look. Click on the dropdown to select the player whose data you wish to see. The shot chart will generate a chart displaying where the player shot from, with green circles as makes and red circles as misses. The zone chart will display the player's field goal percentage by zone compared to the league average. The comparison chart compares the two players selected, showing their field goal percentages by zone. The second player dropdown is only available for the comparison chart.
+                    </p>
+                </div>
             </div>
-        </div>
-
+        </section>
         <h1>Swishify: NBA Shot Chart Visualizer</h1>
+        <div class="links">
+            <a class="link-tags" href="http://www.github.com/elliotchang126"><img class="link-images" src="assets/github.png" alt=""></a>
+            <a class="link-tags" href="http://linkedin.com/in/elliotchang126"><img class="link-images" src="assets/linkedin.png" alt=""></a>
+        </div>
     </header>
     <div class="content"> 
         <section class="profile-container">
             <div class="profile-image"></div>
             <div class="profile-render"></div>
             <div class="profile-selector">
-            <p id="profile-detail">Select a Player Profile:   </p>
-            <select class="profile-dropdown">
-                <option  value="" disabled="disabled">Choose a Player</option>
-                <option value="brown">Jaylen Brown</option>
-                <option value="butler">Jimmy Butler</option>
-                <option value="curry">Stephen Curry</option>
-                <option value="doncic">Luka Doncic</option>
-                <option value="embiid">Joel Embiid</option>
-                <option value="fox">De'Aaron Fox</option>
-                <option value="giannis">Giannis Antetokounmpo</option>
-                <option value="jokic">Nikola Jokic</option>
-                <option selected="selected" value="lebron">LeBron James</option>
-                <option value="lillard">Damian Lillard</option>
-                <option value="mitchell">Donovan Mitchell</option>
-                <option value="randle">Julius Randle</option>
-                <option value="sabonis">Domantas Sabonis</option>
-                <option value="shai">Shai Gilgeous-Alexander</option>
-                <option value="tatum">Jayson Tatum</option>
-            </select>
+                <p id="profile-detail">Select a Player Profile:   </p>
+                <select class="profile-dropdown">
+                    <option  value="" disabled="disabled">Choose a Player</option>
+                    <option value="brown">Jaylen Brown</option>
+                    <option value="butler">Jimmy Butler</option>
+                    <option value="curry">Stephen Curry</option>
+                    <option value="doncic">Luka Doncic</option>
+                    <option value="embiid">Joel Embiid</option>
+                    <option value="fox">De'Aaron Fox</option>
+                    <option value="giannis">Giannis Antetokounmpo</option>
+                    <option value="jokic">Nikola Jokic</option>
+                    <option selected="selected" value="lebron">LeBron James</option>
+                    <option value="lillard">Damian Lillard</option>
+                    <option value="mitchell">Donovan Mitchell</option>
+                    <option value="randle">Julius Randle</option>
+                    <option value="sabonis">Domantas Sabonis</option>
+                    <option value="shai">Shai Gilgeous-Alexander</option>
+                    <option value="tatum">Jayson Tatum</option>
+                </select>
             </div>
         </section>
         <section class="shot-chart-container">
@@ -103,6 +108,6 @@
             </select>
         </section>
     </div>   
-        <!-- <script src="src/scripts/shotchart.js"></script> -->
-    </body>
+    <!-- <script src="src/scripts/shotchart.js"></script> -->
+</body>
 </html>
