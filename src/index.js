@@ -1,5 +1,6 @@
 import { background } from "./scripts/background";
 import { drawHalfCourt } from "./scripts/shotchart";
+// import {drawShots} from "./scripts/drawshots";
 import { zoneChart } from "./scripts/zone";
 // import { writeProfile } from "./scripts/profile";
 const playerBackgrounds = require("../assets/player_backgrounds.json")
@@ -37,18 +38,23 @@ window.onclick = function(event) {
 }
 // draw the shots, if made shots = 1, the circle is green, otherwise it's red
 function drawShots(svg, arr) {
-    svg.selectAll(".dot")
+    const shots = svg.selectAll(".dot") // .dot doesn't exist yet,
     .data(arr)
-    .enter()
+    .enter()                            // when we use enter each element becomes a .dot
     .append('circle')
-    .attr("cx", function(d) { return d[0] + 250; })
-    .attr("cy", function(d) { return d[1] + 50; })
+    .attr("cx", function(d) { return d[0] + 250; })     // d = datum, normal d3 syntax
+    // .attr("cy", function(d) { return d[1] + 50; })
     .attr("r", 4)
     .style('fill', function(d) { return d[2] === 1 ? '#008000' : '#FF0000'})
     .style("stroke", "#333")
     .style("stroke-width", 1);
     
-    return svg
+    shots
+        .attr("cy", function(d) {return d[1] + 455})
+        .transition()
+        .duration(1000)
+        .attr("cy", function(d) {return d[1] + 50});
+    return shots
 }
 
 playerOneSelector.addEventListener("change", function () {

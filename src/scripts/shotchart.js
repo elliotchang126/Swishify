@@ -70,14 +70,14 @@ export function drawHalfCourt () {
         .style("stroke-width", 4);
     
         // restricted area
-        const restrictedArea = d3.arc()
+    const restrictedArea = d3.arc()
         .innerRadius(40)
         .outerRadius(40)
         .startAngle(Math.PI)
         .endAngle(2 * Math.PI);
 
         
-        svg.append("path")
+    svg.append("path")
         .attr("d", restrictedArea)
         .attr("transform", "translate(250, 50) rotate(-90)")
         .style("fill", "none")
@@ -86,12 +86,22 @@ export function drawHalfCourt () {
         
         // basketball rim
         svg.append("circle")
-            .attr("cx", 250)
-            .attr("cy", 57.5)
-            .attr("r", 7.5)
-            .style("fill", "none")
-            .style("stroke", "#FFA500")
-            .style("stroke-width", 4);
+        .attr("cx", 250)
+        .attr("cy", 57.5)
+        .attr("r", 7.5)
+        .style("fill", "none")
+        .style("stroke", "#FFA500")
+        .style("stroke-width", 4);
+        
+    // backboard
+    svg.append("line")
+        .attr("x1", 220)
+        .attr("y1", 50)
+        .attr("x2", 280)
+        .attr("y2", 50)
+        .style("fill", "none")
+        .style("stroke", "#333")
+        .style("stroke-width", 4);
 
     // free throw arc
     const basket = d3.arc()
