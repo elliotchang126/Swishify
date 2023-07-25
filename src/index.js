@@ -1,7 +1,7 @@
 import { background } from "./scripts/background";
 import { drawHalfCourt } from "./scripts/shotchart";
-// import {drawShots} from "./scripts/";
-import { zoneChart } from "./scripts/zone";
+import { generateShotChart } from "./scripts/draw_shots";
+import { drawHexbinChart } from "./scripts/zone";
 import { writeProfile } from "./scripts/profile";
 const playerBackgrounds = require("../assets/player_backgrounds.json")
 
@@ -36,26 +36,6 @@ window.onclick = function(event) {
         document.querySelector(".content").classList.remove("blur");
     }
 }
-// draw the shots, if made shots = 1, the circle is green, otherwise it's red
-function drawShots(svg, arr) {
-    const shots = svg.selectAll(".dot") // .dot doesn't exist yet,
-    .data(arr)
-    .enter()                            // when we use enter each element becomes a .dot
-    .append('circle')
-    .attr("cx", function(d) { return d[0] + 250; })     // d = datum, normal d3 syntax
-    // .attr("cy", function(d) { return d[1] + 50; })
-    .attr("r", 4)
-    .style('fill', function(d) { return d[2] === 1 ? '#008000' : '#FF0000'})
-    .style("stroke", "#333")
-    .style("stroke-width", 1);
-    
-    shots
-        .attr("cy", function(d) {return d[1] + 455})
-        .transition()
-        .duration(1000)
-        .attr("cy", function(d) {return d[1] + 50});
-    return shots
-}
 
 playerOneSelector.addEventListener("change", function () {
     d3.select(".shot-chart svg").remove(); //* remove current chart
@@ -63,20 +43,6 @@ playerOneSelector.addEventListener("change", function () {
     defaultPlayer = playerOneSelector.options[playerOneSelector.selectedIndex].value;
     generateShotChart(defaultPlayer);
 })
-
-function generateShotChart(player) {
-    let playerChart = require(`../assets/year_stats/${player}-23.json`);
-    if (!playerChart) {
-        drawHalfCourt(); // if 
-    } else {
-        let arr = [];
-        playerChart.forEach(el => {
-            arr.push([el.LOC_X, el.LOC_Y, el.SHOT_MADE_FLAG]);
-        })
-        let svg = drawHalfCourt();
-        drawShots(svg, arr);
-    }
-}
 
 profileSelector.addEventListener("change", function() {
     const playerBackgrounds = require("../assets/player_backgrounds.json")
@@ -92,7 +58,9 @@ profileSelector.addEventListener("change", function() {
     document.body.style.backgroundColor = playerBackground.background;
     document.body.style.backgroundRepeat = 'no-repeat';
     writeProfile(playerProfile);
+    drawHexbinChart(playerProfile);
 })
 
 document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
+// document.addEventListener("DOMContentLoaded", drawHexbinChart(playerProfile));
