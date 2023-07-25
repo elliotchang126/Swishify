@@ -17,5 +17,17 @@ export function zoneData(player) {
         }
         return acc;
     }, {});
+
+    for (let zone in playerZones) {
+        let fgm = playerZones[zone].FGM;
+        let fga = playerZones[zone].FGA;
+        playerZones[zone].FG_PCT = parseFloat((fgm / fga).toFixed(3));
+    }
+    console.log(playerZones)
     return playerZones;
 };
+
+
+export function drawBarChart(player1, player2) {
+    
+}
