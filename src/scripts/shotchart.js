@@ -12,7 +12,7 @@ export function drawHalfCourt () {
         .attr("xlink:href", "../assets/hardwood.png")
         .attr("width", 500)
         .attr("height", 500);
-        
+
     // half court
     svg.append("rect")
         .attr("x", 0)
@@ -149,40 +149,6 @@ export function drawHalfCourt () {
         .style("fill", "none")
         .style("stroke", "#333")
         .style("stroke-width", 4);
-
-    // const chartLegend = svg.append("g")
-    //     .attr('class', 'legend');
-        
-    // chartLegend.append('circle')
-    //     .attr('cx', 490)
-    //     .attr('cy', 428)
-    //     .attr('r', 4)
-    //     .style('fill', '#008000')
-    //     .style("stroke", "#333")
-    //     .style("stroke-width", 2);
-
-    // chartLegend.append('text')
-    //     .attr("class", "legend-text")
-    //     .attr('x', 404)
-    //     .attr('y', 432)
-    //     .text('Made Shots:')
-    //     .style('fill', 'black');
-    
-    // chartLegend.append('circle')
-    //     .attr('cx', 490)
-    //     .attr('cy', 440)
-    //     .attr('r', 4)
-    //     .style('fill', '#FF0000')
-    //     .style("stroke", "#333")
-    //     .style("stroke-width", 2);
-
-    // chartLegend.append('text')
-    //     .attr('class', 'legend-text')
-    //     .attr('x', 394)
-    //     .attr('y', 444)
-    //     .text('Missed Shots:')
-    //     .style('fill', 'black');
-
         
     return svg
 }
