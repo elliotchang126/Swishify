@@ -3,6 +3,8 @@ import { drawHalfCourt } from "./scripts/shotchart";
 import { drawShots, generateShotChart } from "./scripts/draw_shots";
 import { drawHexbinChart } from "./scripts/zone";
 import { writeProfile } from "./scripts/profile";
+import { zoneData } from "./scripts/zone_comp";
+
 const playerBackgrounds = require("../assets/player_backgrounds.json")
 
 let defaultPlayer = ""; //* empty default so page renders with an empty court
@@ -74,6 +76,7 @@ hexChart.addEventListener('click', () => {
     drawHexbinChart(playerProfile)});
 comparisonChart.addEventListener("click", () => {
     d3.select(".shot-chart svg").remove();
+    zoneData(playerProfile);
 
 })
 // document.addEventListener("DOMContentLoaded", drawHexbinChart(playerProfile));

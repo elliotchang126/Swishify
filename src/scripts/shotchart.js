@@ -12,6 +12,7 @@ export function drawHalfCourt () {
         .attr("xlink:href", "../assets/hardwood.png")
         .attr("width", 500)
         .attr("height", 500);
+        
     // half court
     svg.append("rect")
         .attr("x", 0)
