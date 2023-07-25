@@ -30,11 +30,20 @@ export function drawHexbinChart(player) {
       .data(bins)
       .join('path')
       .attr("d", hexbin.hexagon())
-      .attr("transform", d => `translate(${d.x}, ${d.y})`)
-      .attr("fill", d => color(d.length))
+      .attr("transform", d => `translate(${width / 2}, ${height / 2})`)
+      .attr("fill", 'white') //d => color(d.length))
       .attr("stroke", '#333')
       .attr("stroke-width", 2)
-      .attr("class", "shot-hexagons");
+      .attr("class", "shot-hexagons")
+      .transition()
+      .duration(1000)
+      .attr("transform", d => `translate(${d.x}, ${d.y})`)
+      .transition()
+      .duration(1200)
+      .attr("fill", d => color(d.length))
+      update => update
+      .duration(1200)
+      .attr('fill', d => color(d.length));
 
       const legendScale = d3.scaleLog()
         .domain([1, d3.max(bins, d => d.length)])
