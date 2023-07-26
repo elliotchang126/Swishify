@@ -5,7 +5,7 @@ export function writeProfile(player) {
 
     const img = d3.select(".profile-image")
         .append("img")
-        .attr('src', `/assets/player_headshots/${player}.webp`)
+        .attr('src', `${window.location}/assets/player_headshots/${player}.webp`)
         .attr("width", 300);
 
 
