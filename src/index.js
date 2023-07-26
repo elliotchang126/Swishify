@@ -80,7 +80,7 @@ profileSelector.addEventListener("change", function() {
     }
     playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
     const playerBackground = playerBackgrounds[playerProfile];
-    document.body.style.backgroundImage = `url(/assets/backgrounds/${playerBackground.image})`
+    document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
     document.body.style.backgroundColor = playerBackground.background;
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
