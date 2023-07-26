@@ -15,7 +15,11 @@ let playerInfo2 = require(`../assets/player_profile/${playerProfile2}.json`)
 
 // set default background when page loads
 const playerBackground = playerBackgrounds[playerProfile];
-document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
+if (process.env.NODE_ENV !== "production") {
+    document.body.style.backgroundImage = `url(./assets/backgrounds/${playerBackground.image})`  
+} else {
+    document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
+}
 document.body.style.backgroundColor = playerBackground.background;
 document.body.style.backgroundPosition = 'center';
 document.body.style.backgroundRepeat = 'no-repeat';
@@ -80,7 +84,11 @@ profileSelector.addEventListener("change", function() {
     }
     playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
     const playerBackground = playerBackgrounds[playerProfile];
-    document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
+    if (process.env.NODE_ENV !== "production") {
+        document.body.style.backgroundImage = `url(./assets/backgrounds/${playerBackground.image})`  
+    } else {
+        document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
+    }
     document.body.style.backgroundColor = playerBackground.background;
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';

@@ -5,10 +5,9 @@ export function writeProfile(player) {
 
     const img = d3.select(".profile-image")
         .append("img")
-        .attr('src', `${window.location}/assets/player_headshots/${player}.webp`)
+        .attr('src', process.env.NODE_ENV !== "production" ? `../..//assets/player_headshots/${player}.webp` : `${window.location}/assets/player_headshots/${player}.webp`)
         .attr("width", 300);
-
-
+        
     const body = d3.select(".profile-render")
         .append("div")
         .attr("class", "player-info")

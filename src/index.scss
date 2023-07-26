@@ -216,7 +216,8 @@ body > div {
 .profile-render {
     position: relative;
     max-width: 500px;
-    height: auto;
+    height: 75%;
+    overflow: scroll;
     display: flex;
     align-items: baseline;
     border: 1px solid black;
