@@ -63,7 +63,7 @@ export function drawBarChart(player1, player2) {
             .attr("fill", "lightgray")
             .attr("stroke", "black")
             .attr("stroke-width", 4)
-            .attr("opacity", 0.7);
+            .attr("opacity", 0.9);
 
         const x = d3.scaleBand()  // divides range evenly between eles of the domain
             .domain(player1.map( d => d.SHOT_ZONE_BASIC ))
@@ -95,7 +95,7 @@ export function drawBarChart(player1, player2) {
 
         svg.append("g")
             .attr("transform", `translate(${margin.left}, 0)`)
-            .call(d3.axisLeft(y).tickFormat(d3.format(".0%")))  // buit in method to create the axis
+            .call(d3.axisLeft(y).ticks(20).tickFormat(d3.format(".0%")))  // buit in method to create the axis
             .style("font-size", "12px")
             .style("font-weight", "bold");
         

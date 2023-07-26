@@ -58,7 +58,7 @@ export function drawEfficiencyChart(player1) {
             .attr("fill", "lightgray")
             .attr("stroke", "black")
             .attr("stroke-width", 4)
-            .attr("opacity", 0.7);
+            .attr("opacity", .9);
 
         const x = d3.scaleBand()
             .domain(player1.map( d => d.SHOT_ZONE_BASIC ))
@@ -87,7 +87,7 @@ export function drawEfficiencyChart(player1) {
 
         svg.append("g")
             .attr("transform", `translate(${margin.left}, 0)`)
-            .call(d3.axisLeft(y).tickFormat(d3.format(".0%")))
+            .call(d3.axisLeft(y).ticks(20).tickFormat(d3.format(".0%")))
             .style("font-size", "12px")
             .style("font-weight", "bold");
         

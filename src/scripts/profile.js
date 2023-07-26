@@ -87,19 +87,19 @@ export function writeProfile(player) {
 
         body.append("p")
             .attr("class", "detail")
-            .text("Average Points:");
+            .text("Points Per Game:");
         body.append("p")
             .text(`${playerStats[0]["PTS"]}`);
 
         body.append("p")
             .attr("class", "detail")
-            .text("Average Rebounds:");
+            .text("Rebounds Per Game:");
         body.append("p")
             .text(`${playerStats[0]["REB"]}`);
 
         body.append("p")
             .attr("class", "detail")
-            .text("Average Assists:");
+            .text("Assists Per Game:");
         body.append("p")
             .text(`${playerStats[0]["AST"]}`);
 
@@ -107,17 +107,17 @@ export function writeProfile(player) {
             .attr("class", "detail")
             .text("Field Goal %:");
         body.append("p")
-            .text(`${playerStats[0]["FG_PCT"]}`);
+            .text(`${(playerStats[0]["FG_PCT"] * 100).toFixed(1)}%`);
 
         body.append("p")
             .attr("class", "detail")
             .text("3 Point %:");
         body.append("p")
-            .text(`${playerStats[0]["FG3_PCT"]}`);
+            .text(`${(playerStats[0]["FG3_PCT"] * 100).toFixed(1)}%`);
 
         body.append("p")
             .attr("class", "detail")
             .text("Free Throw %:");
         body.append("p")
-            .text(`${playerStats[0]["FT_PCT"]}`);
+            .text(`${(playerStats[0]["FT_PCT"] * 100).toFixed(1)}%`);
 }
