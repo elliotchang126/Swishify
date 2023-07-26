@@ -12,8 +12,8 @@ export function drawHalfCourt () {
         .attr("height", height); //* +50 to account for shots behind basket
     // try adding percentages?
     
-    svg.append("image")
-        .attr("xlink:href", `${window.location}/assets/hardwood.png`)
+    svg.append("image") // add conditional process.env.NODE_ENV !== "production"
+        .attr("xlink:href", process.env.NODE_ENV !== "production" ? "./assets/hardwood.png": `${window.location}/assets/hardwood.png`)
         .attr("width", 1000)
         .attr("height", 1000);
 
