@@ -38,17 +38,17 @@ export function drawHexbinChart(player) {
   .attr("stroke", '#333')
   .attr("stroke-width", 2)
   .attr("class", "shot-hexagons")
-  .on("mouseover", ((event, d) => {
-    const [x, y] = d3.pointer(event, svg.node());
-    tooltip.style("display", null);
-    tooltip.select("text").text(`FG's Made: ${d.length}`);
-    const tooltipWidth = tooltip.node().getBBox().width;
-    const tooltipHeight = tooltip.node().getBBox().height;
-    const xt = Math.min(width - tooltipWidth, Math.max(0, x - tooltipWidth / 2));
-    const yt = Math.min(height - tooltipHeight, Math.max(0, y - tooltipHeight / 2));
-    tooltip.attr("transform", `translate(${xt}, ${yt})`);
-  }))
-  .on('mouseout', () => tooltip.style("display", "none"))
+  // .on("mouseover", ((event, d) => {
+  //   const [x, y] = d3.pointer(event, svg.node());
+  //   tooltip.style("display", null);
+  //   tooltip.select("text").text(`FG's Made: ${d.length}`);
+  //   const tooltipWidth = tooltip.node().getBBox().width;
+  //   const tooltipHeight = tooltip.node().getBBox().height;
+  //   const xt = Math.min(width - tooltipWidth, Math.max(0, x - tooltipWidth / 2));
+  //   const yt = Math.min(height - tooltipHeight, Math.max(0, y - tooltipHeight / 2));
+  //   tooltip.attr("transform", `translate(${xt}, ${yt})`);
+  // }))
+  // .on('mouseout', () => tooltip.style("display", "none"))
     .transition()
     .duration(1000)
     .attr("transform", d => `translate(${d.x}, ${d.y})`)
@@ -61,28 +61,28 @@ export function drawHexbinChart(player) {
     
     // add information on hover tool
     
-      tooltip = svg.append("g")
-          .attr("class", "tooltip")
-          .style("display", "none");
+      // tooltip = svg.append("g")
+      //     .attr("class", "tooltip")
+      //     .style("display", "none");
     
-      tooltip.append("rect")
-          .attr("width", 100)
-          .attr("height", 25)
-          .attr("fill", 'white')
-          .style("stroke", "black")
-          .style("stroke-width", 2)
-          .attr("rx", 5)
-          .attr("ry", 5)
-          .style("opacity", 0.8);
+      // tooltip.append("rect")
+      //     .attr("width", 100)
+      //     .attr("height", 25)
+      //     .attr("fill", 'white')
+      //     .style("stroke", "black")
+      //     .style("stroke-width", 2)
+      //     .attr("rx", 5)
+      //     .attr("ry", 5)
+      //     .style("opacity", 0.8);
     
-      tooltip.append("text")
-          .attr("x", 50)
-          .attr("dy", "1.2em")
-          .style("text-anchor", "middle")
-          .attr("font-size", "12px")
-          .attr("font-weight", "bold")
-          .attr("class", "tooltip-text")
-          .style("pointer-events", "none")
+      // tooltip.append("text")
+      //     .attr("x", 50)
+      //     .attr("dy", "1.2em")
+      //     .style("text-anchor", "middle")
+      //     .attr("font-size", "12px")
+      //     .attr("font-weight", "bold")
+      //     .attr("class", "tooltip-text")
+      //     .style("pointer-events", "none")
     
     //* items to create the legend at the bottom of the chart
     const legendScale = d3.scaleLog()

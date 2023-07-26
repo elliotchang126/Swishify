@@ -21,7 +21,6 @@ function leagueAverage() {
         let fga = leagueZones[zone].FGA;
         leagueZones[zone].FG_PCT = parseFloat((fgm / fga).toFixed(3));
     }
-    console.log(leagueZones)
     return Object.values(leagueZones)
 }
 

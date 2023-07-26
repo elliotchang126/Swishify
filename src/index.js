@@ -1,9 +1,8 @@
-import { background } from "./scripts/background";
 import { drawHalfCourt } from "./scripts/shotchart";
-import { drawShots, generateShotChart } from "./scripts/draw_shots";
+import { generateShotChart } from "./scripts/draw_shots";
 import { drawHexbinChart } from "./scripts/zone";
 import { writeProfile } from "./scripts/profile";
-import { zoneData, leagueAverage, drawBarChart } from "./scripts/zone_comp";
+import { drawBarChart } from "./scripts/zone_comp";
 import { drawEfficiencyChart } from "./scripts/league_avg";
 
 const playerBackgrounds = require("../assets/player_backgrounds.json")
@@ -11,12 +10,18 @@ const playerBackgrounds = require("../assets/player_backgrounds.json")
 let defaultPlayer = ""; //* empty default so page renders with an empty court
 let playerProfile = "lebron";
 let playerProfile2 = 'curry';
+let playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
+let playerInfo2 = require(`../assets/player_profile/${playerProfile2}.json`)
+
+// set default background when page loads
 const playerBackground = playerBackgrounds[playerProfile];
 document.body.style.backgroundImage = `url(../assets/backgrounds/${playerBackground.image})`
 document.body.style.backgroundColor = playerBackground.background;
+document.body.style.backgroundPosition = 'center';
 document.body.style.backgroundRepeat = 'no-repeat';
 
 const playerTwoSelector = document.querySelector(".player-two-selector")
+const playerTwoDropdown = document.querySelector(".player-two-dropdown")
 const profileSelector = document.querySelector(".profile-dropdown")
 const modal = document.querySelector(".modal")
 const button = document.querySelector("#instructions")
@@ -25,6 +30,7 @@ const shotChart = document.querySelector("#shot-chart")
 const hexChart = document.querySelector("#hex-chart")
 const efficiencyChart = document.querySelector("#efficiency-chart")
 const comparisonChart = document.querySelector("#comparison-chart")
+const chartTitle = document.querySelector("#shot-chart-title")
 
 // open instructions when button is clicked
 button.onclick = function() {
@@ -52,11 +58,13 @@ window.onclick = function(event) {
 //     generateShotChart(defaultPlayer);
 // })
 
-playerTwoSelector.style.display = "none"
+playerTwoDropdown.style.display = "none"
 
 playerTwoSelector.addEventListener("change", () => {
     d3.select(".shot-chart svg").remove();
     playerProfile2 = playerTwoSelector.options[playerTwoSelector.selectedIndex].value;
+    playerInfo2 = require(`../assets/player_profile/${playerProfile2}.json`)
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} vs. ${playerInfo2[0].DISPLAY_FIRST_LAST} Efficiency`
     drawBarChart(playerProfile, playerProfile2);
 })
 
@@ -69,39 +77,50 @@ profileSelector.addEventListener("change", function() {
     if (!playerProfile) {
         playerProfile = "lebron"
     }
+    playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
     const playerBackground = playerBackgrounds[playerProfile];
     document.body.style.backgroundImage = `url(../assets/backgrounds/${playerBackground.image})`
     document.body.style.backgroundColor = playerBackground.background;
+    document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST}'s Shot Chart`
     writeProfile(playerProfile);
     generateShotChart(playerProfile);
 })
 
-document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
+document.addEventListener("DOMContentLoaded", () => {
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Shot Chart`
+    generateShotChart(playerProfile)
+});
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
+
 shotChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
-    playerTwoSelector.style.display = 'none';
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Shot Chart`
+    playerTwoDropdown.style.display = 'none';
     generateShotChart(playerProfile)});
 
 hexChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
-    playerTwoSelector.style.display = 'none';
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Favorite Zones`
+    playerTwoDropdown.style.display = 'none';
     drawHexbinChart(playerProfile)});
 
 efficiencyChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} vs. League Average`
     drawEfficiencyChart(playerProfile);
-    playerTwoSelector.style.display = 'none';
+    playerTwoDropdown.style.display = 'none';
 })
 
 comparisonChart.addEventListener("click", () => {
     d3.select(".shot-chart svg").remove();
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} vs. ${playerInfo2[0].DISPLAY_FIRST_LAST} Efficiency`
     drawBarChart(playerProfile, playerProfile2);
-    if (playerTwoSelector.style.display === "none") {
-        playerTwoSelector.style.display = "block";
+    if (playerTwoDropdown.style.display === "none") {
+        playerTwoDropdown.style.display = "flex";
     } else {
-        playerTwoSelector.style.display = 'none';
+        playerTwoDropdown.style.display = 'none';
     }
 })
 // document.addEventListener("DOMContentLoaded", drawHexbinChart(playerProfile));
