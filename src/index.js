@@ -15,7 +15,7 @@ document.body.style.backgroundImage = `url(../assets/backgrounds/${playerBackgro
 document.body.style.backgroundColor = playerBackground.background;
 document.body.style.backgroundRepeat = 'no-repeat';
 
-const playerOneSelector = document.querySelector(".player-one-selector")
+const playerTwoSelector = document.querySelector(".player-two-selector")
 const profileSelector = document.querySelector(".profile-dropdown")
 const modal = document.querySelector(".modal")
 const button = document.querySelector("#instructions")
@@ -50,11 +50,19 @@ window.onclick = function(event) {
 //     generateShotChart(defaultPlayer);
 // })
 
+playerTwoSelector.style.display = "none"
+
+playerTwoSelector.addEventListener("change", () => {
+    d3.select(".shot-chart svg").remove();
+    playerProfile2 = playerTwoSelector.options[playerTwoSelector.selectedIndex].value;
+    drawBarChart(playerProfile, playerProfile2);
+})
+
 profileSelector.addEventListener("change", function() {
     const playerBackgrounds = require("../assets/player_backgrounds.json")
     d3.select(".shot-chart svg").remove();
     d3.select(".profile-render div").remove()
-    d3.select(".profile-container img").remove()
+    d3.select(".profile-image img").remove()
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
     if (!playerProfile) {
         playerProfile = "lebron"
@@ -67,19 +75,24 @@ profileSelector.addEventListener("change", function() {
     generateShotChart(playerProfile);
 })
 
-document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
+document.addEventListener("DOMContentLoaded", drawBarChart(playerProfile, playerProfile2)); // defaults to an empty court
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
 shotChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
+    playerTwoSelector.style.display = 'none';
     generateShotChart(playerProfile)});
 hexChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
+    playerTwoSelector.style.display = 'none';
     drawHexbinChart(playerProfile)});
 comparisonChart.addEventListener("click", () => {
     d3.select(".shot-chart svg").remove();
     drawBarChart(playerProfile, playerProfile2);
-    // zoneData(playerProfile);
-    // zoneData(playerProfile2);
-
+    // drawBarChart(playerProfile, playerProfile2);
+    if (playerTwoSelector.style.display === "none") {
+        playerTwoSelector.style.display = "block";
+    } else {
+        playerTwoSelector.style.display = 'none';
+    }
 })
 // document.addEventListener("DOMContentLoaded", drawHexbinChart(playerProfile));

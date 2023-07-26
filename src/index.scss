@@ -46,16 +46,18 @@ table {
 	border-spacing: 0;
 }
 
+// Everything above is CSS Reset
+
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    position: relative;
 }
 
 h1 {
-    display:flex;
-    justify-content: center;
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 0.6);
@@ -65,7 +67,7 @@ h1 {
 
 #instructions {
     background-color: rgba(220,220,220, 0.4);
-    border-radius: 7px;
+    border-radius: 10px;
     padding: 8px 10px;
     font-size: 20px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -83,7 +85,7 @@ h1 {
 }
 
 .link-tags {
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .link-tags:hover {
@@ -96,13 +98,14 @@ h1 {
     font-size: 35px;
     text-align: center;
     color: white;
+    margin-bottom: 50px;
 }
 
 .content {
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 body > div {
@@ -113,11 +116,22 @@ body > div {
 .profile-selector {
     display: flex;
     justify-content: flex-end;
-    align-items:baseline;
+    align-items: baseline;
+    margin: 20px;
+    gap: 10px;
 }
 
 .profile-image {
-    margin-bottom: -3px;
+    display: flex;
+    border: 5px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-image > img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .legend-text {
@@ -132,18 +146,22 @@ body > div {
 
 .profile-container {
     display: block;
-    width: 37.5%;
     height: 100%;
-    // flex-direction: column-reverse;
+}
+
+.container-two {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 .profile-render {
     position: relative;
-    width: 550px;
+    max-width: 500px;
     height: auto;
     display: flex;
     align-items: baseline;
-    border: 3px solid black;
+    border: 1px solid black;
     margin-bottom: 10px;
 }
 
@@ -161,23 +179,26 @@ body > div {
     left: 0;
     background-color: lightgray;
     background-repeat: no-repeat;
-    opacity: .8;
+    opacity: 0.8;
     z-index: -1;
 }
 
 #profile-detail {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 1);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgb(0, 0, 0);
 }
 .player-info > p {
     flex: 1 0 50%;
     font-size: 20px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    border: 1px solid black;
     box-sizing: border-box;
+    padding: 10px;
 }
 
+.tooltip-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
 .modal {
     display: none;
@@ -213,6 +234,8 @@ h4 {
     text-align: justify;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 20px;
+    line-height: 25px;
+    // box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .close {
@@ -234,8 +257,16 @@ h4 {
 }
 
 .shot-hexagons {
-    opacity: .8;
+    opacity: 0.8;
 }
+
+// .svg-content-responsive {
+//     display: block;
+//     position: relative;
+//     width: 100%;
+//     height: 100%;
+//     overflow: visible;
+// }
 
 @media screen and (max-width: 1200px) {
     .content {

@@ -1,17 +1,21 @@
 export function drawHalfCourt () {
+    const width = 500;
+    const height = 450;
 
     const svg = d3.select(".shot-chart")
-    .append("svg")
+        .append("svg")
     //* data assumes 0, 0 is basket so
-    .attr("width", 500) //* +250 to account for D3 start plot
-    .attr("height", 450); //* +50 to account for shots behind basket
+        // .attr('preserveAspectRatio', 'xMidYMid meet')
+        // .attr('viewBox',`0 0 ${width} ${height}`)
+        // .classed("svg-content-responsive", true);
+        .attr("width", width) //* +250 to account for D3 start plot
+        .attr("height", height); //* +50 to account for shots behind basket
     // try adding percentages?
     
-
     svg.append("image")
         .attr("xlink:href", "../assets/hardwood.png")
-        .attr("width", 500)
-        .attr("height", 500);
+        .attr("width", 1000)
+        .attr("height", 1000);
 
     // half court
     svg.append("rect")
@@ -149,7 +153,7 @@ export function drawHalfCourt () {
         .style("fill", "none")
         .style("stroke", "#333")
         .style("stroke-width", 4);
-        
+
     return svg
 }
 

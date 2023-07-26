@@ -20,11 +20,11 @@ export function drawHexbinChart(player) {
   .radius(radius)
   .extent([[0, 0], [width, height]]);
   
-  const bins = hexbin(shotCoords);
+  const bins = hexbin(shotCoords); // collects each shot location into "bins"
   // console.log(bins)
   
-  const color = d3.scaleSequentialLog(d3.interpolateInferno)
-  .domain([1, d3.max(bins, d => d.length)]);
+  const color = d3.scaleSequentialLog(d3.interpolateInferno)  // log scale works better compared to sequential
+  .domain([1, d3.max(bins, d => d.length)]); // input bounds
   
   // add hexagons
   
@@ -66,7 +66,7 @@ export function drawHexbinChart(player) {
           .style("display", "none");
     
       tooltip.append("rect")
-          .attr("width", 85)
+          .attr("width", 100)
           .attr("height", 25)
           .attr("fill", 'white')
           .style("stroke", "black")
@@ -76,11 +76,12 @@ export function drawHexbinChart(player) {
           .style("opacity", 0.8);
     
       tooltip.append("text")
-          .attr("x", 42)
+          .attr("x", 50)
           .attr("dy", "1.2em")
           .style("text-anchor", "middle")
           .attr("font-size", "12px")
           .attr("font-weight", "bold")
+          .attr("class", "tooltip-text")
           .style("pointer-events", "none")
     
     //* items to create the legend at the bottom of the chart
