@@ -13,7 +13,7 @@ export function drawHalfCourt () {
     // try adding percentages?
     
     svg.append("image")
-        .attr("xlink:href", "https://elliotchang126.github.io/")
+        .attr("xlink:href", "./assets")
         .attr("width", 1000)
         .attr("height", 1000);
 
