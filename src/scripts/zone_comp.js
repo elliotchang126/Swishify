@@ -102,11 +102,15 @@ export function drawBarChart(player1, player2) {
             .enter()
             .append("rect")
             .attr("x", d => x(d.SHOT_ZONE_BASIC))
-            .attr("y", d => y(d.FG_PCT))
+            .attr("y", d => y(0))
             .attr("width", x1.bandwidth())
-            .attr("height", d => y(0) - y(d.FG_PCT))
+            .attr("height", 0)
             .style("stroke", "black")
-            .attr("fill", "green");
+            .attr("fill", "green")
+            .transition()
+                .duration(1300)
+                .attr("y", d => y(d.FG_PCT))
+                .attr("height", d => y(0) - y(d.FG_PCT));
 
         //appending player2 data to the graph    
         svg.append("g")
@@ -115,11 +119,15 @@ export function drawBarChart(player1, player2) {
             .enter()
             .append("rect")
             .attr("x", d => x(d.SHOT_ZONE_BASIC) + x1.bandwidth())
-            .attr("y", d => y(d.FG_PCT))
+            .attr("y", d => y(0))
             .attr("width", x1.bandwidth())
-            .attr("height", d => y(0) - y(d.FG_PCT))
+            .attr("height", 0)
             .style("stroke", "black")
-            .attr("fill", "red");
+            .attr("fill", "red")
+            .transition()
+                .duration(1500)
+                .attr("y", d => y(d.FG_PCT))
+                .attr("height", d => y(0) - y(d.FG_PCT));
 
     return svg
 }

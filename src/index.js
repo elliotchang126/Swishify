@@ -92,12 +92,12 @@ hexChart.addEventListener('click', () => {
 efficiencyChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
     drawEfficiencyChart(playerProfile);
+    playerTwoSelector.style.display = 'none';
 })
 
 comparisonChart.addEventListener("click", () => {
     d3.select(".shot-chart svg").remove();
     drawBarChart(playerProfile, playerProfile2);
-    // drawBarChart(playerProfile, playerProfile2);
     if (playerTwoSelector.style.display === "none") {
         playerTwoSelector.style.display = "block";
     } else {
