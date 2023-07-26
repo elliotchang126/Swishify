@@ -28,6 +28,11 @@ export function zoneData(player) {
 
 
 export function drawBarChart(player1, player2) {
+    const player1Info = require(`../../assets/player_profile/${player1}.json`);
+    const player2Info = require(`../../assets/player_profile/${player2}.json`);
+    
+    const players = [{name: player1Info[0].DISPLAY_FIRST_LAST, color: "green"}, {name: player2Info[0].DISPLAY_FIRST_LAST, color: 'red'}];
+    
     player1 = zoneData(player1);
     player2 = zoneData(player2);
 
@@ -128,6 +133,29 @@ export function drawBarChart(player1, player2) {
                 .duration(1500)
                 .attr("y", d => y(d.FG_PCT))
                 .attr("height", d => y(0) - y(d.FG_PCT));
+
+    let legend = svg.selectAll("legend")
+        .data(players)
+        .enter()
+        .append('g')
+        .attr('class', 'bar-legend')
+        .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+
+        legend.append("rect")
+            .attr("x", width - 25)
+            .attr("y", 4)
+            .attr("width", 18)
+            .attr("height", 18)
+            .style("fill", d => d.color)
+            .style("stroke", "black")
+        
+        legend.append("text")
+            .attr("x", width - 30)
+            .attr("y", 12)
+            .attr("class", "bar-legend-text")
+            .attr("dy", "0.35em")
+            .style("text-anchor", "end")
+            .text(d => d.name)
 
     return svg
 }

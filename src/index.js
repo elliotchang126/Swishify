@@ -73,6 +73,7 @@ profileSelector.addEventListener("change", function() {
     d3.select(".shot-chart svg").remove();
     d3.select(".profile-render div").remove()
     d3.select(".profile-image img").remove()
+    playerTwoDropdown.style.display = 'none';
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
     if (!playerProfile) {
         playerProfile = "lebron"
