@@ -90,7 +90,7 @@ export function drawBarChart(player1, player2) {
 
         svg.append("g")
             .attr("transform", `translate(${margin.left}, 0)`)
-            .call(d3.axisLeft(y))  // buit in method to create the axis
+            .call(d3.axisLeft(y).tickFormat(d3.format(".0%")))  // buit in method to create the axis
             .style("font-size", "12px")
             .style("font-weight", "bold");
         
