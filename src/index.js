@@ -120,8 +120,6 @@ comparisonChart.addEventListener("click", () => {
     drawBarChart(playerProfile, playerProfile2);
     if (playerTwoDropdown.style.display === "none") {
         playerTwoDropdown.style.display = "flex";
-    } else {
-        playerTwoDropdown.style.display = 'none';
     }
 })
 // document.addEventListener("DOMContentLoaded", drawHexbinChart(playerProfile));
