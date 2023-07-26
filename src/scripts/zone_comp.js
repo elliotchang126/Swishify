@@ -155,7 +155,7 @@ export function drawBarChart(player1, player2) {
             .attr("class", "bar-legend-text")
             .attr("dy", "0.35em")
             .style("text-anchor", "end")
-            .text(d => d.name)
+            .text(d => d.name);
 
     return svg
 }
