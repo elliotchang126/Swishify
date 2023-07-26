@@ -3,7 +3,8 @@ import { drawHalfCourt } from "./scripts/shotchart";
 import { drawShots, generateShotChart } from "./scripts/draw_shots";
 import { drawHexbinChart } from "./scripts/zone";
 import { writeProfile } from "./scripts/profile";
-import { zoneData, drawBarChart } from "./scripts/zone_comp";
+import { zoneData, leagueAverage, drawBarChart } from "./scripts/zone_comp";
+import { drawEfficiencyChart } from "./scripts/league_avg";
 
 const playerBackgrounds = require("../assets/player_backgrounds.json")
 
@@ -22,6 +23,7 @@ const button = document.querySelector("#instructions")
 const instructions = document.querySelector(".close")
 const shotChart = document.querySelector("#shot-chart")
 const hexChart = document.querySelector("#hex-chart")
+const efficiencyChart = document.querySelector("#efficiency-chart")
 const comparisonChart = document.querySelector("#comparison-chart")
 
 // open instructions when button is clicked
@@ -75,16 +77,23 @@ profileSelector.addEventListener("change", function() {
     generateShotChart(playerProfile);
 })
 
-document.addEventListener("DOMContentLoaded", drawBarChart(playerProfile, playerProfile2)); // defaults to an empty court
+document.addEventListener("DOMContentLoaded", drawHalfCourt()); // defaults to an empty court
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));
 shotChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
     playerTwoSelector.style.display = 'none';
     generateShotChart(playerProfile)});
+
 hexChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
     playerTwoSelector.style.display = 'none';
     drawHexbinChart(playerProfile)});
+
+efficiencyChart.addEventListener('click', () => {
+    d3.select(".shot-chart svg").remove();
+    drawEfficiencyChart(playerProfile);
+})
+
 comparisonChart.addEventListener("click", () => {
     d3.select(".shot-chart svg").remove();
     drawBarChart(playerProfile, playerProfile2);
