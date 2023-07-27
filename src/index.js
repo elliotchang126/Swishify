@@ -77,8 +77,10 @@ profileSelector.addEventListener("change", function() {
     d3.select(".shot-chart svg").remove();
     d3.select(".profile-render div").remove()
     d3.select(".profile-image img").remove()
+
     playerTwoDropdown.style.display = 'none';
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
+
     let p2Disable = playerTwoSelector.querySelector(`option[value=${playerProfile}]`)
         p2Disable.disabled = true;
         for (let option of playerTwoSelector.options) {
@@ -92,11 +94,13 @@ profileSelector.addEventListener("change", function() {
     }
     playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
     const playerBackground = playerBackgrounds[playerProfile];
+    
     if (process.env.NODE_ENV !== "production") {
         document.body.style.backgroundImage = `url(./assets/backgrounds/${playerBackground.image})`  
     } else {
         document.body.style.backgroundImage = `url(${window.location}/assets/backgrounds/${playerBackground.image})`
     }
+
     document.body.style.backgroundColor = playerBackground.background;
     document.body.style.backgroundPosition = 'center';
     document.body.style.backgroundRepeat = 'no-repeat';
