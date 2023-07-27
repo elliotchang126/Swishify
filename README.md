@@ -46,7 +46,7 @@ The most difficult part of setting the bar chart up was the logic behind how the
 
 ## Future
 
-In the future, it would be great expand the scope and implement the ability to access all players as well as multiple years in the application. 
+Expanding the scope and implement the ability to access all players as well as multiple years in the application. 
 
 <!-- ## Background -->
 <!-- Swishify is a data visualizer for All-NBA players for the 2023 season. The purpose is to be able to compare where these top players like to shoot from. It has the following elements:
