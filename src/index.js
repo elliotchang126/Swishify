@@ -55,15 +55,10 @@ window.onclick = function(event) {
     }
 }
 
-// playerOneSelector.addEventListener("change", function () {
-//     d3.select(".shot-chart svg").remove(); //* remove current chart
-
-//     defaultPlayer = playerOneSelector.options[playerOneSelector.selectedIndex].value;
-//     generateShotChart(defaultPlayer);
-// })
-
+// p2 dropdown hidden by default
 playerTwoDropdown.style.display = "none"
 
+// change comparison chart when a different player is selected
 playerTwoSelector.addEventListener("change", () => {
     d3.select(".shot-chart svg").remove();
     playerProfile2 = playerTwoSelector.options[playerTwoSelector.selectedIndex].value;
@@ -72,6 +67,7 @@ playerTwoSelector.addEventListener("change", () => {
     drawBarChart(playerProfile, playerProfile2);
 })
 
+// changes the data to be the current player
 profileSelector.addEventListener("change", function() {
     const playerBackgrounds = require("../assets/player_backgrounds.json")
     d3.select(".shot-chart svg").remove();
@@ -81,6 +77,7 @@ profileSelector.addEventListener("change", function() {
     playerTwoDropdown.style.display = 'none';
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
 
+    // disables the current player from p2 dropdown
     let p2Disable = playerTwoSelector.querySelector(`option[value=${playerProfile}]`)
         p2Disable.disabled = true;
         for (let option of playerTwoSelector.options) {
@@ -112,7 +109,7 @@ profileSelector.addEventListener("change", function() {
 document.addEventListener("DOMContentLoaded", () => {
     chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Shot Chart`
     let p2Disable = playerTwoSelector.querySelector(`option[value=${playerProfile}]`)
-    
+
     p2Disable.disabled = true;
     for (let option of playerTwoSelector.options) {
         if (option.value !== playerProfile) {
@@ -131,7 +128,7 @@ shotChart.addEventListener('click', () => {
 
 hexChart.addEventListener('click', () => {
     d3.select(".shot-chart svg").remove();
-    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Favorite Zones`
+    chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Zone Frequency`
     playerTwoDropdown.style.display = 'none';
     drawHexbinChart(playerProfile)});
 

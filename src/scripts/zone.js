@@ -85,35 +85,39 @@ export function drawHexbinChart(player) {
       //     .style("pointer-events", "none")
     
     //* items to create the legend at the bottom of the chart
-    const legendScale = d3.scaleLog()
+    const legendScale = d3.scaleLog()  
         .domain([1, d3.max(bins, d => d.length)])
         .range([0, width - 200]);
 
       const numLegends = 8;
 
+      // changes the width and number of rectangles the legend will have (needed to increase # colors in legend)
       const numLegendWidth = width / (1.5 * numLegends);
 
       const legendHeight = 20;
-      const legendMargin = 10;
 
       const legend = svg.append('g')
-        .attr("transform", `translate(80, 410)`);
+        .attr("transform", `translate(80, 410)`); // place towards bottom
 
       legend.selectAll(".legend-box")
         .data(d3.range(numLegends))
         .join("rect")
-        .attr("x", (d, i) => i * numLegendWidth)
+        .attr("x", (d, i) => i * numLegendWidth) // index times with prevents overlap
         .attr("width", numLegendWidth)
         .attr("height", legendHeight)
+        // fills the rectangles that we join with the color. invert takes the output and reverses it to the domain
         .attr("fill", d => color(legendScale.invert(numLegendWidth * (d + 1))))
         .attr("stroke", "black");
 
+        // sets the numeric lables for the legend
       legend.selectAll(".legend-label")
         .data(d3.range(numLegends))
         .join("text")
         .attr("x", (d, i) => i * numLegendWidth)
+        // move it further down to prevent overlap
         .attr("y", legendHeight + 10)
         .attr("class", "legend-label")
+        // same thing as previous but inverts it to the nearest number to append to the scale
         .text(d => Math.round(legendScale.invert(numLegendWidth * (d + 1))));
       
   return svg

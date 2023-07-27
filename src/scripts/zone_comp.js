@@ -81,7 +81,7 @@ export function drawBarChart(player1, player2) {
             //domain is the input bounds
             .domain([0, Math.max(d3.max(player1, d => d.FG_PCT), d3.max(player2, d => d.FG_PCT))]).nice()
             //range is the output bounds
-            .range([height - margin.bottom, margin.top]);
+            .range([height - margin.bottom, margin.top]); //invert. d3 is weird
 
             // appending x axis
         svg.append('g')
@@ -99,7 +99,6 @@ export function drawBarChart(player1, player2) {
             .style("font-size", "12px")
             .style("font-weight", "bold");
         
-
         //appending player1 data to the graph
         svg.append("g")
             .selectAll("rect")
@@ -114,8 +113,8 @@ export function drawBarChart(player1, player2) {
             .attr("fill", "green")
             .transition()
                 .duration(1300)
-                .attr("y", d => y(d.FG_PCT))
-                .attr("height", d => y(0) - y(d.FG_PCT));
+                .attr("y", d => y(d.FG_PCT))    //sets the y coord. d3 is weird
+                .attr("height", d => y(0) - y(d.FG_PCT)); //sets rectangle height
 
         //appending player2 data to the graph    
         svg.append("g")
