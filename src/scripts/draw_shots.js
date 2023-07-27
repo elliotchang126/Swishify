@@ -24,7 +24,7 @@ export function drawShots(svg, arr) {
 export function generateShotChart(player) {
     let playerChart = require(`../../assets/year_stats/${player}-23.json`);
     if (!playerChart) {
-        drawHalfCourt(); // if 
+        drawHalfCourt();
     } else {
         let arr = [];
         playerChart.forEach(el => {

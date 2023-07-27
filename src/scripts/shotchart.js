@@ -132,19 +132,19 @@ export function drawHalfCourt () {
         .style("stroke-dasharray", "10, 7");
 
     // 3 point arc
-    const startAngle = Math.atan2(134 - 57.5, 30 - 250) + 0.005;
-    const endAngle = Math.atan2(134 - 57.5, 470 - 250) - 0.005;
-    const outerRadius = Math.sqrt(Math.pow(30 - 250, 2) + Math.pow(134 - 57.5, 2));
+    const startAngle = Math.atan2(134 - 57.5, 30 - 250) + 0.005;  //starting point. opposite over adjacent. y coord then x
+    const endAngle = Math.atan2(134 - 57.5, 470 - 250) - 0.005;     // end point, same as above but for the other side
+    const outerRadius = Math.sqrt(Math.pow(30 - 250, 2) + Math.pow(134 - 57.5, 2)); // pyth theorem a^2 + b^2 = c^2
 
-// arc starting and ending point //* need to understand how this works
-    const endingpoints = d3.range(startAngle, endAngle, (endAngle - startAngle) / 1000).map(function(t) {
-        return [outerRadius, t];
+// arc starting and ending point //* need to understand how this works. d3.range is start, stop, and step
+    const endingpoints = d3.range(startAngle, endAngle, (endAngle - startAngle) / 1000).map(function(t) {   // divides by 1000 to create different values by step
+        return [outerRadius, t]; // creates each endpoint of the 'circle'. the 3 point line isn't exactly a perfect circle though
     });
 
-// define the line //* also need to understand how this works
-    const threePointArc = d3.lineRadial()
-        .angle(function(d) { return d[1]; })
-        .radius(function(d) { return d[0]; });
+// define the line //* also need to understand how this works. basically, it's not really a "circle" but a lot of little lines using the endpoints above
+    const threePointArc = d3.lineRadial()       //built-in method
+        .angle(function(d) { return d[1]; })    // angle from that point
+        .radius(function(d) { return d[0]; });  
 
     svg.append("path")
         .datum(endingpoints)

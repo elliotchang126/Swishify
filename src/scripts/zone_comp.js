@@ -22,7 +22,6 @@ export function zoneData(player) {
         let fga = playerZones[zone].FGA;
         playerZones[zone].FG_PCT = parseFloat((fgm / fga).toFixed(3));
     }
-    // console.log(Object.values(playerZones))
     return Object.values(playerZones);
 };
 
