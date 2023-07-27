@@ -44,40 +44,6 @@ The second feature is the bar chart makes comparing the selected player easy by 
 
 The most difficult part of setting the bar chart up was the logic behind how the bar chart is made. There are a variety of built-in D3 methods that required a lot of research to know what these methods even are and how they are used in relation to generating the chart. Even now, there are methods I found online that other people used that I don't quite understand what they do, and some methods I only have a base understanding in.
 
-## Snippets
-
-Iterating through shots to accumulate values into a single object by zone.
-```
-    let playerZones = playerData.reduce((acc, shot) => {
-        let key = `${shot.SHOT_ZONE_BASIC}`;
-        if (!acc[key]) {
-            acc[key] = {
-                SHOT_ZONE_BASIC: shot.SHOT_ZONE_BASIC,
-                FGA: 0,
-                FGM: 0
-            }
-        }
-        acc[key].FGA += shot.SHOT_ATTEMPTED_FLAG;
-        if (shot.SHOT_MADE_FLAG === 1) {
-            acc[key].FGM += shot.SHOT_MADE_FLAG;
-        }
-        return acc;
-    }, {});
-```
-Iterating through shots and creating a new array, only looking at relevant data to create shot chart.
-```
-    let playerChart = require(`../../assets/year_stats/${player}-23.json`);
-    if (!playerChart) {
-        drawHalfCourt();
-    } else {
-        let arr = [];
-        playerChart.forEach(el => {
-            arr.push([el.LOC_X, el.LOC_Y, el.SHOT_MADE_FLAG]);
-        })
-
-    // ...continued code here...
-```
-
 ## Future
 
 Expanding the scope and implement the ability to access all players as well as multiple years in the application. 
