@@ -38,11 +38,45 @@ A typical star NBA player takes over a thousand shots over the course of the reg
 
 D3 was not very intuitive to use at the beginning, and surprisingly the biggest challenge was actually creating accurate court dimensions so that the shot coordinates would accurately render. The basket was considered the [0, 0] coordinates, and D3 considers those coordinates the top left. This meant that the data needed to be transposed to align with the difference in coordinates. It serves as the basis for both the shot chart and the hexbin chart.
 
-The second feature is the bar chart makes comparing the selected player easy by just looking at which bar is higher than the other. Utilizing this chart, we can quickly take in how well a player shot compared to a fellow All-NBA player or the league average. In bar chart form, it's a quick scan from the top of the bar to the y-axis to get a rough idea of how much better or worse a player was from a particular zone.
+The second feature is the bar chart makes comparing the selected player easy by just looking at which bar is higher than the other. Utilizing this chart, we can quickly take in how well a player shot compared to a fellow All-NBA player or the league average. In bar chart form, it's a quick scan from the top of the bar to the y-axis to get a rough idea of how much better or worse a player was from a particular zone. The logic and functionality of this was key as it's the foundation for creating both the player comparison and the league average comparison.
 
 ![](./assets/bar-chart.gif)
 
 The most difficult part of setting the bar chart up was the logic behind how the bar chart is made. There are a variety of built-in D3 methods that required a lot of research to know what these methods even are and how they are used in relation to generating the chart. Even now, there are methods I found online that other people used that I don't quite understand what they do, and some methods I only have a base understanding in.
+
+## Snippets
+
+Iterating through shots to accumulate values into a single object by zone.
+```
+    let playerZones = playerData.reduce((acc, shot) => {
+        let key = `${shot.SHOT_ZONE_BASIC}`;
+        if (!acc[key]) {
+            acc[key] = {
+                SHOT_ZONE_BASIC: shot.SHOT_ZONE_BASIC,
+                FGA: 0,
+                FGM: 0
+            }
+        }
+        acc[key].FGA += shot.SHOT_ATTEMPTED_FLAG;
+        if (shot.SHOT_MADE_FLAG === 1) {
+            acc[key].FGM += shot.SHOT_MADE_FLAG;
+        }
+        return acc;
+    }, {});
+```
+Iterating through shots and creating a new array, only looking at relevant data to create shot chart.
+```
+    let playerChart = require(`../../assets/year_stats/${player}-23.json`);
+    if (!playerChart) {
+        drawHalfCourt();
+    } else {
+        let arr = [];
+        playerChart.forEach(el => {
+            arr.push([el.LOC_X, el.LOC_Y, el.SHOT_MADE_FLAG]);
+        })
+
+    // ...continued code here...
+```
 
 ## Future
 
