@@ -79,6 +79,14 @@ profileSelector.addEventListener("change", function() {
     d3.select(".profile-image img").remove()
     playerTwoDropdown.style.display = 'none';
     playerProfile = profileSelector.options[profileSelector.selectedIndex].value;
+    let p2Disable = playerTwoSelector.querySelector(`option[value=${playerProfile}]`)
+        p2Disable.disabled = true;
+        for (let option of playerTwoSelector.options) {
+            if (option.value !== playerProfile) {
+                option.disabled = false;
+            }
+        }
+
     if (!playerProfile) {
         playerProfile = "lebron"
     }
