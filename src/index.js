@@ -94,7 +94,7 @@ profileSelector.addEventListener("change", function() {
     }
     playerInfo = require(`../assets/player_profile/${playerProfile}.json`)
     const playerBackground = playerBackgrounds[playerProfile];
-    
+
     if (process.env.NODE_ENV !== "production") {
         document.body.style.backgroundImage = `url(./assets/backgrounds/${playerBackground.image})`  
     } else {
@@ -111,6 +111,14 @@ profileSelector.addEventListener("change", function() {
 
 document.addEventListener("DOMContentLoaded", () => {
     chartTitle.textContent = `${playerInfo[0].DISPLAY_FIRST_LAST} Shot Chart`
+    let p2Disable = playerTwoSelector.querySelector(`option[value=${playerProfile}]`)
+    
+    p2Disable.disabled = true;
+    for (let option of playerTwoSelector.options) {
+        if (option.value !== playerProfile) {
+            option.disabled = false;
+        }
+    }
     generateShotChart(playerProfile)
 });
 document.addEventListener("DOMContentLoaded", writeProfile(playerProfile));

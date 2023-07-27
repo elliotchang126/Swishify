@@ -1,0 +1,88 @@
+#shot-chart-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 35px;
+    // width: 75%;
+    // align-self: center;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8), -3px -3px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
+    // word-wrap: break-word;
+    white-space: normal;
+    // overflow-wrap: break-word;
+}
+
+.shot-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shot-chart-type {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.shot-chart-type > button {
+    flex-grow: 1;
+    padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgba(220,220,220, 0.7);
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.shot-chart-type > button:hover {
+    background-color: rgba(220,220,220, 1);
+}
+
+.player-two-dropdown {
+    justify-content: flex-end;
+    align-items: baseline;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.player-two-selector {
+    padding: 5px;
+    border-radius: 15px;
+    border: 2px solid black;
+}
+
+#player-two-detail {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    text-shadow: 5px 5px 8px rgba(0, 0, 0, 1), -5px -5px 8px rgba(0, 0, 0, 1);
+}
+
+.container-two {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    @media (max-width: 1050px ) {
+        justify-content: center;
+    }
+}
+
+.shot-hexagons {
+    opacity: 0.8;
+}
+
+// bar chart legend
+.bar-legend-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+//shot chart legend
+.legend-text {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+}
+
+// hex chart legend
+.legend-label {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+}

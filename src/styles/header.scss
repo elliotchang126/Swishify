@@ -1,0 +1,46 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 10px;
+}
+
+h1 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(0, 0, 0, 0.6);
+    font-size: 35px;
+    padding: 20px 20px 50px 20px;
+}
+
+#instructions {
+    background-color: rgba(220,220,220, 0.4);
+    border-radius: 15px;
+    // padding: 5px 10px;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 20px;
+}
+
+#instructions:hover {
+    background-color: rgba(220,220,220, 1);
+    cursor: pointer;
+}
+
+.link-images {
+    width: 50px;
+    padding-right: 20px;
+}
+
+.link-tags {
+    opacity: 0.6;
+}
+
+.link-tags:hover {
+    opacity: 1;
+    cursor: pointer;
+}
