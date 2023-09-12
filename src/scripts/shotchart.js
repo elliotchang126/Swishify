@@ -14,8 +14,8 @@ export function drawHalfCourt () {
     
     svg.append("image") // add conditional process.env.NODE_ENV !== "production"
         .attr("xlink:href", process.env.NODE_ENV !== "production" ? "./assets/hardwood.png": `${window.location}/assets/hardwood.png`)
-        .attr("width", 1000)
-        .attr("height", 1000);
+        .attr("width", 600)
+        .attr("height", 600);
 
     // half court
     svg.append("rect")

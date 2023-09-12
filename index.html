@@ -11,21 +11,17 @@
     <title>Swishify</title>
 </head>
 <body class="main">
-    <header>
+    <header class="header">
         <button id="instructions">Instructions</button>
         <section>
             <div class="modal">
                 <div class="instructions-modal">
                     <span class="close">&times;</span>
-                    <h4>Welcome to Swishify!</h4>
-                    <p>Swishify lets users take a deeper look at the players who made the 2022-23 All-NBA teams. The main functions of Swishify is to look at a player's profile and their shot chart for the 2022-23 regular season.
-                    </p> 
-                    <p>On the left side is the player profile. By default, Swishify will load the page with LeBron James pre-selected. Click on the dropdown in the middle, just below the profile image of the player to change the player profile. This will list their general information, as well as career average statistics. In addition, it defaults to generating the shot chart for that player for the 2022-23 season.
-                    </p>
-                    <p>On the right, use the buttons below the chart to select what kind of data to look. The four options available are the shot chart (opened by default) showing makes and misses, the hex chart, the efficiency chart, and the player comparison chart. The hex chart shows the number of times the player shot in that general area for the year, with the color scaling to the number of shots. The efficiency chart compares the player to the league average for those zones.
-                    </p>
-                    <p>Lastly, the player comparison chart allows users to compare the currently selected player with a different All-NBA player and renders a bar chart comparing their shooting efficiency in each zone. By default, the second player selected is Stephen Curry. A dropdown also appears right below the original dropdown, allowing users to change the second player.
-                    </p>
+                    <h4><img class="logo" src="./assets/favicon.png" alt='logo' /> Welcome to Swishify! </h4>
+                    <p>Swishify lets you see detailed shot charts for top NBA players from the 2022-23 season. When you first open it, you'll see LeBron James' stats and shots, but you can pick a different player from a dropdown list under his picture. Besides general stats, there's a shot chart for that season.</p>
+
+                    <p>Right next to the player's info, you'll see a visual of their shots – where they made or missed them. Want to see more? Switch between views to check out shot patterns, compare a player's shots to the league average, or even see how they stack up against someone like Stephen Curry. It's all about seeing how the best of the best shoot their shots!</p>
+                    
                 </div>
             </div>
         </section>
@@ -79,20 +75,22 @@
             </select>
         </div>
         <div class="container-two">
-            <section class="profile-container">
-                <div class="profile-render"></div>
-            </section>
-            <section class="shot-chart-container">
-                <div class="shot-chart">
-                    <h3 id="shot-chart-title"></h3>
-                </div>
-                <div class="shot-chart-type">
-                    <button id="shot-chart">Shot Chart</button>
-                    <button id="hex-chart">Hex Chart</button>
-                    <button id="efficiency-chart">Efficiency Chart</button>
-                    <button id="comparison-chart">Player Comp Chart</button>
-                </div>
-            </section>
+            <h3 id="shot-chart-title"></h3>
+            <div id="player-data">
+                <section class="profile-container">
+                    <div class="profile-render"></div>
+                </section>
+                <section class="shot-chart-container">
+                    <div class="shot-chart">
+                    </div>
+                    <div class="shot-chart-type">
+                        <button id="shot-chart">Shot Chart</button>
+                        <button id="hex-chart">Hex Chart</button>
+                        <button id="efficiency-chart">Efficiency Chart</button>
+                        <button id="comparison-chart">Player Comp Chart</button>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>   
     <!-- <script src="src/scripts/shotchart.js"></script> -->
